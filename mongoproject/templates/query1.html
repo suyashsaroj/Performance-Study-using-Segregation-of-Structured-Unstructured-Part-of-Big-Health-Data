@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block query %}
+	<head>
+		<meta charset="utf-8">
+		<link href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.css" rel="stylesheet" type="text/css">
+	 	<link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.css" rel="stylesheet" type="text/css">
+	 	<script src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+		<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+		{{ context['script'] | safe }}
+	</head>
+	<style>		
+		div.query-scroll {
+			background-color: grey;
+			overflow: scroll;
+			height:250px;
+		}
+	</style>
+    <p><h1>Query Execution 1</h1></p><br>
+    <h4>1. Find all Doctors' Name who are attached with a particular Organisation.</h4><br>
+    <h4>
+	    <form method="POST" action="{{ url_for('q1') }}">
+	        <label for="category">Organisation: </label>
+	        <select name="organisation" class="form-control" id="organisation">
+	            <option selected>Choose...</option>
+	            <option value="AIIMS">AIIMS</option>
+	            <option value="APPOLO">APPOLO</option>
+	            <option value="PMCH">PMCH</option>
+	            <option value="Central Hospital">Central Hospital</option>
+	            <option value="Sankara Netrayala">Sankara Netrayala</option>
+	        </select>
+	        <input type="submit" value="Search">
+	    </form><br>
+	</h4><br>
+	{{ context['timep'] }} {{ timep }}<br><br>
+	<div align="center">
+		{{ context['div'] | safe }}
+	</div><br>
+    <div class="query-scroll">
+	    {% for doctor in doctors %}
+			<h5>{{ doctor.Name }}</h5>
+		{% endfor %}
+	</div>
+{% endblock query %}

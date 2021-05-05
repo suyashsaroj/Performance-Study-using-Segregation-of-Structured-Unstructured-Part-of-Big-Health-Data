@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block query %}
+	<head>
+        <meta charset="utf-8">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.css" rel="stylesheet" type="text/css">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.css" rel="stylesheet" type="text/css">
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+        {{ context['script'] | safe }}
+    </head>
+	<style>
+		div.query-scroll {
+			background-color: grey;
+			  overflow: scroll;
+			  height:250px;
+		}
+	</style>
+    <p><h1>Query Execution 5</h1></p><br>
+    <h4>5. Find the number of babies with age(<=5) and suffering from malnutrition.</h4><br>
+    <h4>
+    {{ context['timep'] }} {{ timep }}<br>
+	{{ context['number'] }} {{ count }}<br><br>
+	<div align="center">
+        {{ context['div'] | safe }}
+    </div><br>
+    <div class="query-scroll">
+    	{% for child in children %}
+    	{{ context['name'] }}: {{ child.Name }}<br>
+    	{{ context['complaint_details'] }}: {{ child.Complaint_Details }}<br><br>
+    	{% endfor %}
+	</div>
+{% endblock query %}

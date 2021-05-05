@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block query %}
+    <p><h1>Upload ECG File</h1></p><br>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="text" name="Patient_ID">
+        <input type="file" name="document">
+        <input type="submit">
+    </form>
+    {{ message }}
+{% endblock query %}

@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block query %}
+	<style>
+		div.query-scroll {
+			background-color: grey;
+			  overflow: scroll;
+			  height:250px;
+		}
+	</style>
+    <p><h1>Query Execution 4</h1></p><br>
+    <h4>4. Find all the complaint details of a Patient.</h4><br>
+    <h4>
+    <form method="POST" action="{{ url_for('q4') }}">
+    	<label for="ID">Enter Patient ID: </label>
+    	<input id="ID" type="text" name="ID">
+    	<input type="submit" value="Search"></input> <br><br>
+    </form><br>
+	</h4>
+{% endblock query %}

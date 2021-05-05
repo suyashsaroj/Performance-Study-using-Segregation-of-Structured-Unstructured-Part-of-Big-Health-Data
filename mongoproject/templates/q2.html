@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block query %}
+	<style>
+		div.query-scroll {
+			background-color: grey;
+			  overflow: scroll;
+			  height:250px;
+		}
+	</style>
+    <p><h1>Query Execution 2</h1></p><br>
+    <h4>2. Find all Doctors' Name with Specialization string 'Cardiologist'.</h4><br>
+    <h4>
+    <form method="POST" action="{{ url_for('q2') }}">
+        <label for="category">Specialization: </label>
+        <select name="specialization" class="form-control" id="specialization">
+            <option selected>Choose...</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Pediatricians">Pediatricians</option>
+            <option value="Anesthesiologist">Anesthesiologist</option>
+            <option value="Allergist">Allergist</option>
+            <option value="Gynaecologist">Gynaecologist</option>
+        </select>
+        <input type="submit" value="Search">
+    </form><br>
+	</h4>
+{% endblock query %}

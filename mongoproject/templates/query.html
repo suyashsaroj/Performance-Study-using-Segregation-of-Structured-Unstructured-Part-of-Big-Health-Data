@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block query %}	
+    <p><h1>Query Execution</h1></p>
+      <hr class="w3-opacity">
+      <h4 class="w3-padding-16">Select Any Query:</h4><br>
+      <a href="{{ url_for('q1') }}" onclick="w3_close()" class="w3-bar-item w3-button">1. Find all Doctors' Name who are attached with a particular Organisation</a><br>
+      <a href="{{ url_for('q2') }}" onclick="w3_close()" class="w3-bar-item w3-button">2. Find all Doctors' Name with Specialization string 'Cardiologist'.</a><br>
+      <a href="{{ url_for('q3') }}" onclick="w3_close()" class="w3-bar-item w3-button">3. Find all information like demographic info, food habit etc, for a patient.</a><br>
+      <a href="{{ url_for('q4') }}" onclick="w3_close()" class="w3-bar-item w3-button">4. Find all the complaint details of a Patient.</a><br>
+      <a href="{{ url_for('q5') }}" onclick="w3_close()" class="w3-bar-item w3-button">5. Find the number of babies with age(<=5) and suffering from malnutrition.</a><br>
+      <a href="{{ url_for('q6') }}" onclick="w3_close()" class="w3-bar-item w3-button">6. Find ECG File of a Patient.</a>   
+{% endblock query %}

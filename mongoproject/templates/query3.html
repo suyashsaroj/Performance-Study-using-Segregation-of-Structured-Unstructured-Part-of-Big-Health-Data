@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block query %}
+    <head>
+        <meta charset="utf-8">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.css" rel="stylesheet" type="text/css">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.css" rel="stylesheet" type="text/css">
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+        {{ context['script'] | safe }}
+    </head>
+	<style>
+		div.query-scroll {
+			background-color: grey;
+			  overflow: scroll;
+			  height:250px;
+		}
+	</style>
+    <p><h1>Query Execution 3</h1></p><br>
+    <h4>3. Find all information like demographic info, food habit etc, for a patient.</h4><br>
+    <h4>
+    <form method="POST" action="{{ url_for('q3') }}">
+    	<label for="ID">Enter Person ID: </label>
+    	<input id="ID" type="text" name="ID">
+    	<input type="submit" value="Search"></input> <br><br>
+    </form><br>
+	</h4>
+    {{ context['timep'] }} {{ timep }}<br><br>
+    <div align="center">
+        {{ context['div'] | safe }}
+    </div><br>
+    <div class="query-scroll">
+        {% for person in persons %}
+        {{ context['name'] }}: {{ person.Name }}<br>
+        {{ context['demo'] }}: {{ person.Demographic_Info }}<br>
+        {{ context['habit']}}: {{ person.Food_Habbit }}<br>
+        {% endfor %}
+    </div>
+{% endblock query %}

@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block query %}
+    <head>
+        <meta charset="utf-8">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.css" rel="stylesheet" type="text/css">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.css" rel="stylesheet" type="text/css">
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+        {{ context['script'] | safe }}
+    </head>
+	<style>
+		div.query-scroll {
+			background-color: grey;
+			  overflow: scroll;
+			  height:250px;
+		}
+	</style>
+    <p><h1>Query Execution 2</h1></p><br>
+    <h4>2. Find all Doctors' Name with Specialization string 'Cardiologist'.</h4><br>
+    <h4>
+    <form method="POST" action="{{ url_for('q2') }}">
+        <label for="category">Specialization: </label>
+        <select name="specialization" class="form-control" id="specialization">
+            <option selected>Choose...</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Pediatricians">Pediatricians</option>
+            <option value="Anesthesiologist">Anesthesiologist</option>
+            <option value="Allergist">Allergist</option>
+            <option value="Gynaecologist">Gynaecologist</option>
+        </select>
+        <input type="submit" value="Search">
+    </form><br>
+	</h4>
+    {{ context['timep'] }} {{ timep }}<br><br>
+    <div align="center">
+        {{ context['div'] | safe }}
+    </div><br>
+    <div class="query-scroll">
+    {% for doctor in doctors %}
+        <h4>{{ doctor.Name }}</h4>
+    {% endfor %}
+    </div>
+{% endblock query %}

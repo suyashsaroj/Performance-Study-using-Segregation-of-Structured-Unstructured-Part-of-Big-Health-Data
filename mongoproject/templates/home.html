@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block content %}
+  <head></head>
+  <body>
+  	<div class="container">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+				<div style="color:green; background-color:white;">
+					{{ message }}
+				</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}<br>
+		<img src="{{ url_for('static', filename='image.jpg') }}"></img>
+	</div>
+  </body>
+{% endblock content %}

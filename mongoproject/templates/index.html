@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% if title %}
+      <title>MongoDB Project - {{ title }}</title>
+  {% else %}
+      <title>MongoDB Project</title>
+  {% endif %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+</head>
+
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+  <h3 class="padding-64 center"><b><br></b></h3>
+  <a href="javascript:void(0)" onclick="close()" class="bar-item button padding hide-large"></a>
+  <a href="{{ url_for('about') }}" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT THE PROJECT</a> 
+  <a href="{{ url_for('query') }}" onclick="w3_close()" class="w3-bar-item w3-button">QUERY EXECUTION</a> 
+  <a href="{{ url_for('feedback') }}" onclick="w3_close()" class="w3-bar-item w3-button">FEED-BACK FORM</a>
+</nav>
+
+<!-- Top menu on small screens -->
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Push down content on small screens --> 
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+  <!-- Photo grid -->
+  <div class="w3-row">
+    <div class="w3-third">
+    </div>
+
+    <div class="w3-third">
+      <h1 align="center">Project on Bigdata</h1>
+    </div>
+    
+    <div class="w3-third">
+    </div>
+  </div>
+
+  <!-- Pagination -->
+ 
+  
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- About section -->
+  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
+      {% block content %}{% endblock %}
+      
+  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="query">  
+      {% block query %}{% endblock %}
+      <br>
+      
+<body>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+  <!-- Contact section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>FeedBack Form</b></h4>
+      <p>We would love to hear your thoughts, concerns or problems with anything so we can improve!</p>
+      <form action="{{ url_for('feedback') }}" method="POST">
+        <div class="w3-section">
+          <label>Name</label>
+          <input class="w3-input w3-border" type="text" name="Name" required>
+        </div>
+        <div class="w3-section">
+          <label>Email</label>
+          <input class="w3-input w3-border" type="email" name="Email" required>
+        </div>
+        <div class="w3-section">
+          <label>Describe Feedback</label>
+          <input class="w3-input w3-border" type="text" name="Feedback" required>
+        </div>
+        <button type="submit" class="w3-button w3-block w3-black w3-margin-bottom">SUBMIT FEEDBACK</button>
+      </form>
+    </div>
+  </div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
+
+
+</body>
+</html>
